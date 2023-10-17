@@ -1,0 +1,51 @@
+From: Andreas Henriksson <andreas@fatal.se>
+Date: Fri, 29 Jan 2021 23:36:48 +0100
+Subject: python3
+
+---
+ scripts/py2dsc        | 2 +-
+ scripts/py2dsc-deb    | 2 +-
+ scripts/pypi-download | 2 +-
+ scripts/pypi-install  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/scripts/py2dsc b/scripts/py2dsc
+index fe4ce58..e3b30d3 100755
+--- a/scripts/py2dsc
++++ b/scripts/py2dsc
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import stdeb.cli_runner
+ import sys
+diff --git a/scripts/py2dsc-deb b/scripts/py2dsc-deb
+index 5507032..507c759 100755
+--- a/scripts/py2dsc-deb
++++ b/scripts/py2dsc-deb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import stdeb.cli_runner
+ import sys
+diff --git a/scripts/pypi-download b/scripts/pypi-download
+index 32216f3..7d70879 100755
+--- a/scripts/pypi-download
++++ b/scripts/pypi-download
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import sys
+ from optparse import OptionParser
+ from stdeb.downloader import myprint, get_source_tarball
+diff --git a/scripts/pypi-install b/scripts/pypi-install
+index 2803f7b..4606306 100755
+--- a/scripts/pypi-install
++++ b/scripts/pypi-install
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import os
+ import shutil
+ import sys
