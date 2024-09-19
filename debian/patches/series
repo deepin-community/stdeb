@@ -2,3 +2,5 @@ use_pybuild_buildsystem.patch
 bump_standards-version.patch
 add_debian_watch.patch
 python3.patch
+0005-Migrate-off-SafeConfigParser.patch
+0006-readfp-read_file.patch

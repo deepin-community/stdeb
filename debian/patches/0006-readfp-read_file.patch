@@ -1,0 +1,22 @@
+From: Luca Della Vedova <lucadv@intrinsic.ai>
+Date: Tue, 18 Jun 2024 17:07:18 +0800
+Subject: readfp -> read_file
+Origin: https://github.com/astraw/stdeb/pull/196
+Signed-off-by: Luca Della Vedova <lucadv@intrinsic.ai>
+---
+ stdeb/util.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stdeb/util.py b/stdeb/util.py
+index fb39c53..cfab645 100644
+--- a/stdeb/util.py
++++ b/stdeb/util.py
+@@ -799,7 +799,7 @@ class DebianInfo:
+         cfg = ConfigParser.ConfigParser(cfg_defaults)
+         for cfg_file in cfg_files:
+             with codecs.open(cfg_file, mode='r', encoding='utf-8') as fd:
+-                cfg.readfp(fd)
++                cfg.read_file(fd)
+ 
+         if sdist_dsc_command is not None:
+             # Allow distutils commands to override config files (this lets
