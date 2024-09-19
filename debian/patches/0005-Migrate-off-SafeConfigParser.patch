@@ -1,0 +1,64 @@
+From: Luca Della Vedova <lucadv@intrinsic.ai>
+Date: Tue, 18 Jun 2024 16:54:16 +0800
+Subject: Migrate off SafeConfigParser
+Origin: https://github.com/astraw/stdeb/pull/196
+Signed-off-by: Luca Della Vedova <lucadv@intrinsic.ai>
+---
+ stdeb/cli_runner.py |  7 +------
+ stdeb/util.py       | 11 +++--------
+ 2 files changed, 4 insertions(+), 14 deletions(-)
+
+diff --git a/stdeb/cli_runner.py b/stdeb/cli_runner.py
+index e4cb6f9..0d32329 100644
+--- a/stdeb/cli_runner.py
++++ b/stdeb/cli_runner.py
+@@ -3,12 +3,7 @@ import os
+ import shutil
+ import subprocess
+ import sys
+-try:
+-    # python 2.x
+-    from ConfigParser import SafeConfigParser  # noqa: F401
+-except ImportError:
+-    # python 3.x
+-    from configparser import SafeConfigParser  # noqa: F401
++from configparser import ConfigParser  # noqa: F401
+ from distutils.util import strtobool
+ from distutils.fancy_getopt import FancyGetopt, translate_longopt
+ from stdeb.util import stdeb_cmdline_opts, stdeb_cmd_bool_opts
+diff --git a/stdeb/util.py b/stdeb/util.py
+index dc97faf..fb39c53 100644
+--- a/stdeb/util.py
++++ b/stdeb/util.py
+@@ -9,12 +9,7 @@ import shutil
+ import sys
+ import time
+ import codecs
+-try:
+-    # Python 2.x
+-    import ConfigParser
+-except ImportError:
+-    # Python 3.x
+-    import configparser as ConfigParser
++import configparser as ConfigParser
+ import subprocess
+ import tempfile
+ import stdeb  # noqa: F401
+@@ -730,7 +725,7 @@ def check_cfg_files(cfg_files, module_name):
+     example.
+     """
+ 
+-    cfg = ConfigParser.SafeConfigParser()
++    cfg = ConfigParser.ConfigParser()
+     cfg.read(cfg_files)
+     if cfg.has_section(module_name):
+         section_items = cfg.items(module_name)
+@@ -801,7 +796,7 @@ class DebianInfo:
+         if len(cfg_files):
+             check_cfg_files(cfg_files, module_name)
+ 
+-        cfg = ConfigParser.SafeConfigParser(cfg_defaults)
++        cfg = ConfigParser.ConfigParser(cfg_defaults)
+         for cfg_file in cfg_files:
+             with codecs.open(cfg_file, mode='r', encoding='utf-8') as fd:
+                 cfg.readfp(fd)
